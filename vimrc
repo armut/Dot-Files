@@ -16,7 +16,7 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set ignorecase
-"colo desert
+colorscheme ron
 
 " IndentLine
 let g:indentLine_char = '┃'

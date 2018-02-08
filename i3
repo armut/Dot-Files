@@ -1,0 +1,1 @@
+/home/zamma/.config/i3
