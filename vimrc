@@ -11,6 +11,8 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'Yggdroot/indentLine'
 Plugin 'morhetz/gruvbox'
+Plugin 'zivyangll/git-blame.vim'
+Plugin 'tpope/vim-surround'
 call vundle#end()
 
 set encoding=utf-8
@@ -22,7 +24,18 @@ set shiftwidth=4
 set expandtab
 set ignorecase
 set nowrap
+set hlsearch
+set mouse=a
 colorscheme ron
+
+" Split pane navigation with alt + arrow
+nnoremap <silent> æ :wincmd k<CR>
+nnoremap <silent> Ω :wincmd j<CR>
+nnoremap <silent> ∂ :wincmd l<CR>
+nnoremap <silent> ß :wincmd h<CR>
+
+" Other
+nnoremap # #``
 
 " IndentLine
 let g:indentLine_char = '┃'
@@ -54,15 +67,14 @@ autocmd WinEnter * setlocal cursorcolumn
 autocmd WinLeave * setlocal nocursorcolumn
 "highlight CursorLine guibg=#303000 ctermbg=234
 
-autocmd Filetype c setlocal ts=3 sw=3 expandtab
-autocmd Filetype javascript setlocal ts=2 sw=2 expandtab
+autocmd Filetype c setlocal ts=8 sw=8 expandtab
+"autocmd Filetype javascript setlocal ts=2 sw=2 expandtab
 autocmd Filetype python setlocal ts=4 sw=4 expandtab
-autocmd Filetype html setlocal ts=2 sw=2 expandtab
+"autocmd Filetype html setlocal ts=2 sw=2 expandtab
+"autocmd Filetype htmldjango setlocal ts=2 sw=2 expandtab
 
 " Reduce the vim update time for vim-gitgutter
 set updatetime=100
-
-" Quit NERDTree if it is the only buffer:
 
 " Python syntax
 let g:python_highlight_all = 1
