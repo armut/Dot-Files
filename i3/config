@@ -30,18 +30,15 @@ font pango:monospace 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec i3-sensible-terminal --working-directory=$PWD
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
-#bindsym $mod+d exec rofi -show run
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
+# bindsym $mod+d exec dmenu_run
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+d exec i3-dmenu-desktop --dmenu='rofi -dmenu -p "cmd:: " -i -lines 10 -eh 1 -width50 -padding 20 -opacity "85" -font "Roboto Mono Condensed 14"'  
 
 # change focus
 bindsym $mod+j focus left
@@ -101,9 +98,10 @@ bindsym $mod+4 workspace 4
 bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+9 workspace "9:Code"
+workspace "9:Code" output DP2
+bindsym $mod+0 workspace "10:Gezgin"
+workspace "10:Gezgin" output eDP1
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
@@ -173,6 +171,7 @@ bar {
 }
 
 exec --no-startup-id pulseaudio
+exec --no-startup-id amixer -D pulse sset Master toggle
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume 0 +1% &> /tmp/i3log #increase sound volume
@@ -211,11 +210,17 @@ smart_gaps on
 bindsym --release $mod+Print exec gnome-screenshot -a
 bindsym --release Print exec gnome-screenshot
 
-# Float
+# Float -- xprop
 for_window [instance="sun-awt-X11-XFramePeer"] floating enable
 for_window [instance="sun-awt-X11-XFramePeer" class="jetbrains-idea"] floating disable
 for_window [instance="sun-awt-X11-XFramePeer" class="jetbrains-datagrip"] floating disable
 for_window [instance="sun-awt-X11-XDialogPeer"] floating enable
-for_window [class="Nautilus" instance="nautilus"] floating enable
-for_window [instance="a.out"] floating enable move position center
+for_window [title="Merhaba"] floating enable move position center
+
+# Keyboard repeat interval
+exec --no-startup-id xset r rate 200 30
+
+# Force nautilus to open in its own workspace
+assign [class="Nautilus"] "10:Gezgin"
+assign [class="code-oss"] "9:Code"
 
