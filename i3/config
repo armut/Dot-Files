@@ -38,7 +38,7 @@ bindsym $mod+Shift+q kill
 # start dmenu (a program launcher)
 # bindsym $mod+d exec dmenu_run
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
-bindsym $mod+d exec i3-dmenu-desktop --dmenu='rofi -dmenu -p "cmd:: " -i -lines 10 -eh 1 -width50 -padding 20 -opacity "85" -font "Roboto Mono Condensed 14"'  
+bindsym $mod+d exec i3-dmenu-desktop --dmenu='rofi -dmenu -p "cmd:: " -i -lines 10 -eh 1 -width50 -padding 20 -opacity "85" -font "Audimat Regular 14"'  
 
 # change focus
 bindsym $mod+j focus left
@@ -152,10 +152,10 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         i3bar_command i3bar -t
-        status_command ~/Programs/i3blocks-gaps/i3blocks
+        status_command ~/Programs/i3blocks-gaps/i3blocks -c ~/.config/i3/i3blocks.conf
         tray_output primary
         position top
-        font pango:monospace 10
+        font pango:IBM 3270 12
         separator_symbol "/"
         strip_workspace_numbers yes
 
@@ -171,29 +171,32 @@ bar {
 }
 
 exec --no-startup-id pulseaudio
-exec --no-startup-id amixer -D pulse sset Master toggle
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume 0 +1% &> /tmp/i3log #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume 0 -1% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+# Try amixer -c 0 for further scrunitizing.
+#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume 0 +10% &> /tmp/i3log #increase sound volume
+#bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume 0 -10% #decrease sound volume
+#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q sset Master 3%+
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q sset Master 3%-
+bindsym XF86AudioMute exec --no-startup-id bash -x /home/zamma/.config/i3/scripts/sound.sh
 
 # Microphone Toggle
 bindsym XF86AudioMicMute exec --no-startup-id amixer set Capture toggle
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 3 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 3 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
 bindsym XF86Display exec sleep 1 && xset -display :0.0 dpms force off # turn the screen light off
 
 exec --no-startup-id redshift -O 3200
 bindsym $mod+Shift+s sticky toggle
+bindsym $mod+Shift+b border toggle
 bindsym $mod+Tab workspace next
 bindsym $mod+Shift+Tab workspace prev
 bindsym $mod+n exec firefox
 
 exec --no-startup-id setxkbmap tr
-exec --no-startup-id xrandr --auto --output DP2 --right-of eDP1
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id bash -x /home/zamma/.config/i3/scripts/tap_to_click.sh
 

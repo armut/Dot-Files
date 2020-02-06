@@ -57,19 +57,19 @@ let g:airline#extensions#tabline#fnamemod=':t'
 "  endif
 "let g:airline_symbols.space = "\ua0"
 
-set cursorcolumn
+"set cursorcolumn
 colo gruvbox
 set cursorline
-hi CursorLine cterm=bold term=bold guifg=grey50
+"hi CursorLine cterm=bold term=bold guifg=grey50
 autocmd WinEnter * setlocal cursorline
 autocmd WinLeave * setlocal nocursorline
-autocmd WinEnter * setlocal cursorcolumn
-autocmd WinLeave * setlocal nocursorcolumn
+"autocmd WinEnter * setlocal cursorcolumn
+"autocmd WinLeave * setlocal nocursorcolumn
 "highlight CursorLine guibg=#303000 ctermbg=234
 
-autocmd Filetype c setlocal ts=8 sw=8 expandtab
+"autocmd Filetype c setlocal ts=8 sw=8 expandtab
 "autocmd Filetype javascript setlocal ts=2 sw=2 expandtab
-autocmd Filetype python setlocal ts=4 sw=4 expandtab
+"autocmd Filetype python setlocal ts=4 sw=4 expandtab
 "autocmd Filetype html setlocal ts=2 sw=2 expandtab
 "autocmd Filetype htmldjango setlocal ts=2 sw=2 expandtab
 
