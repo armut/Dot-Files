@@ -95,3 +95,4 @@ nmap <F10> :NERDTreeToggle<CR>
 " https://stackoverflow.com/questions/2066590/automatically-quit-vim-if-nerdtree-is-last-and-only-buffer
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
+inoremap jj <Esc>
