@@ -149,25 +149,25 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-        i3bar_command i3bar -t
-        status_command ~/Programs/i3blocks-gaps/i3blocks -c ~/.config/i3/i3blocks.conf
-        tray_output eDP1
-        position top
-        font pango:IBM 3270 Narrow 12
-        separator_symbol "/"
-        strip_workspace_numbers yes
+#bar {
+#       i3bar_command i3bar -t
+#       status_command ~/Programs/i3blocks-gaps/i3blocks -c ~/.config/i3/i3blocks.conf
+#       tray_output eDP1
+#       position bottom
+#       font pango:IBM 3270 Narrow 12
+#       separator_symbol "/"
+#       strip_workspace_numbers yes
 
-        colors {
-            background #00000000
-            statusline #ffffff
-            separator  #DAF7A6 
-            focused_workspace #FFC300 #FFC300  #000000
-            #active_workspace #FFC300 #FFC300  #000000
-            #inactive_workspace #FFC300 #FFC300  #000000
-            #urgent_workspace #FFC300 #FFC300  #000000
-        }
-}
+#       colors {
+#           background #000000
+#           statusline #ffffff
+#           separator  #DAF7A6 
+#           focused_workspace #FFC300 #FFC300  #000000
+#           #active_workspace #FFC300 #FFC300  #000000
+#           #inactive_workspace #FFC300 #FFC300  #000000
+#           #urgent_workspace #FFC300 #FFC300  #000000
+#       }
+#}
 
 exec --no-startup-id pulseaudio
 
@@ -201,18 +201,20 @@ exec --no-startup-id bash -x /home/zamma/.config/i3/scripts/tap_to_click.sh
 
 # For gaps
 for_window [class="^.*"] border pixel 0
-gaps inner 10
-gaps outer 5
+gaps inner 5
+gaps outer 1
 smart_gaps on
 
 # Screen lock
 #bindsym $mod+Shift+p i3lock -i ~/Pictures/Lakeside_Sunset_1920x1080.jpg.png
 
 # Screenshot
+bindsym --release $mod+shift+control+2 exec gnome-screenshot -i
+bindsym --release $mod+shift+control+3 exec gnome-screenshot -wB
 bindsym --release $mod+shift+control+4 exec gnome-screenshot -a
 
 # Float -- xprop
-for_window [instance="sun-awt-X11-XFramePeer"] floating enable
+for_window [instance="sun-awt-X11-XFramePeer"] floating enable move position center border normal
 for_window [instance="sun-awt-X11-XFramePeer" class="jetbrains-idea"] floating disable
 for_window [instance="sun-awt-X11-XFramePeer" class="jetbrains-datagrip"] floating disable
 for_window [instance="sun-awt-X11-XDialogPeer"] floating enable
@@ -224,4 +226,11 @@ exec --no-startup-id xset r rate 200 30
 # Force nautilus to open in its own workspace
 #assign [class="Nautilus"] "10:Gezgin"
 #assign [class="code-oss"] "9:Code"
+
+# Scratchpad
+bindsym $mod+shift+BackSpace move scratchpad
+bindsym $mod+BackSpace scratchpad show
+
+# Start polybar
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
