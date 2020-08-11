@@ -228,8 +228,8 @@ exec --no-startup-id xset r rate 200 30
 #assign [class="code-oss"] "9:Code"
 
 # Scratchpad
-bindsym $mod+shift+BackSpace move scratchpad
-bindsym $mod+BackSpace scratchpad show
+bindsym $mod+Insert move scratchpad
+bindsym Insert scratchpad show
 
 # Start polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh

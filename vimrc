@@ -13,6 +13,8 @@ Plugin 'Yggdroot/indentLine'
 Plugin 'morhetz/gruvbox'
 Plugin 'zivyangll/git-blame.vim'
 Plugin 'tpope/vim-surround'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'preservim/nerdtree'
 call vundle#end()
 
 set encoding=utf-8
@@ -96,3 +98,7 @@ nmap <F10> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 inoremap jj <Esc>
+
+" Execute current line in the shell:
+nmap <F6> :exec '!'.getline('.') <CR>
+
