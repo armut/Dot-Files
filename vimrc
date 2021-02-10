@@ -13,10 +13,16 @@ Plugin 'Yggdroot/indentLine'
 Plugin 'morhetz/gruvbox'
 Plugin 'zivyangll/git-blame.vim'
 Plugin 'tpope/vim-surround'
-Plugin 'airblade/vim-gitgutter'
+Plugin 'majutsushi/tagbar'
 Plugin 'preservim/nerdtree'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'andrewradev/linediff.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'roman/golden-ratio'
 call vundle#end()
 
+set path+=**
+set wildmenu
 set encoding=utf-8
 syntax on
 set number
@@ -28,13 +34,31 @@ set ignorecase
 set nowrap
 set hlsearch
 set mouse=a
+set bs=2 " For backspace to work.
 colorscheme ron
 
-" Split pane navigation with alt + arrow
+" Split pane navigation with alt + arrow for MacOS
 nnoremap <silent> æ :wincmd k<CR>
 nnoremap <silent> Ω :wincmd j<CR>
 nnoremap <silent> ∂ :wincmd l<CR>
 nnoremap <silent> ß :wincmd h<CR>
+
+" Disable Golden-Ratio initially and set a key mapping:
+let g:golden_ratio_autocommand = 0
+let g:golden_ratio_status = 0
+nnoremap <silent> ğ :call GoldenRatioToggle()<CR>
+
+function! GoldenRatioToggle()
+    if g:golden_ratio_status
+        let g:golden_ratio_status = 0
+        :GoldenRatioToggle
+        :wincmd =
+    else
+        let g:golden_ratio_status = 1
+        :GoldenRatioToggle
+        :GoldenRatioResize
+    endif
+endfunction
 
 " Other
 nnoremap # #``
@@ -47,7 +71,7 @@ let g:indentLine_enabled = 0
 " Airline
 set laststatus=2
 let g:airline_theme='bubblegum'
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0
 " For tab-like buffer listing:
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#fnamemod=':t'
