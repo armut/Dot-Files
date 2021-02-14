@@ -37,22 +37,24 @@ LIGHT_GREEN="#7cb342"
 MENU="$(rofi -no-lazy-grab -sep "|" -dmenu -i -p 'System :' \
 -hide-scrollbar true \
 -bw 0 \
--lines 4 \
+-lines 5 \
 -line-padding 10 \
 -padding 20 \
--width 15 \
--xoffset -27 -yoffset 60 \
+-width 10 \
+-xoffset 0 -yoffset 0 \
 -location 3 \
 -columns 1 \
 -show-icons -icon-theme "Papirus" \
--font "Fantasque Sans Mono 10" \
+-font "Iosevka 10" \
+-opacity 55 \
 -color-enabled true \
 -color-window "$BACKGROUND,$BORDER,$SEPARATOR" \
 -color-normal "$BACKGROUND_ALT,$FOREGROUND,$BACKGROUND_ALT,$HIGHLIGHT_BACKGROUND,$HIGHLIGHT_FOREGROUND" \
 -color-active "$BACKGROUND,$MAGENTA,$BACKGROUND_ALT,$HIGHLIGHT_BACKGROUND,$HIGHLIGHT_FOREGROUND" \
 -color-urgent "$BACKGROUND,$YELLOW,$BACKGROUND_ALT,$HIGHLIGHT_BACKGROUND,$HIGHLIGHT_FOREGROUND" \
-<<< "  Lock|  Logout|  Reboot|  Shutdown")"
+<<< "Suspend|  Lock|  Logout|  Reboot|  Shutdown")"
 case "$MENU" in
+  *Suspend) systemctl suspend ;;
   *Lock) i3lock ;;
   *Logout) openbox --exit;;
   *Reboot) systemctl reboot ;;

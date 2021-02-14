@@ -101,6 +101,17 @@ bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
+# ...and using numpad
+bindsym KP_End workspace 1
+bindsym KP_Down workspace 2
+bindsym KP_Next workspace 3
+bindsym KP_Left workspace 4
+bindsym KP_Begin workspace 5
+bindsym KP_Right workspace 6
+bindsym KP_Home workspace 7
+bindsym KP_Up workspace 8
+bindsym KP_Prior workspace 9
+bindsym KP_Insert workspace 10
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
@@ -192,7 +203,9 @@ exec --no-startup-id redshift -O 3200
 bindsym $mod+Shift+s sticky toggle
 bindsym $mod+Shift+b border toggle
 bindsym $mod+Tab workspace next
+bindsym Super_R workspace next
 bindsym $mod+Shift+Tab workspace prev
+bindsym --whole-window button8 workspace prev
 bindsym $mod+n exec firefox
 
 exec --no-startup-id nitrogen --restore
@@ -201,8 +214,8 @@ exec --no-startup-id bash -x /home/zamma/.config/i3/scripts/tap_to_click.sh
 # For gaps
 for_window [class="^.*"] border pixel 0
 gaps inner 5
-gaps outer 1
-smart_gaps on
+gaps outer 5
+#smart_gaps on
 
 # Screen lock
 #bindsym $mod+Shift+p i3lock -i ~/Pictures/Lakeside_Sunset_1920x1080.jpg.png
@@ -218,6 +231,9 @@ for_window [instance="sun-awt-X11-XFramePeer" class="jetbrains-idea"] floating d
 for_window [instance="sun-awt-X11-XFramePeer" class="jetbrains-datagrip"] floating disable
 for_window [instance="sun-awt-X11-XDialogPeer"] floating enable
 for_window [title="Merhaba"] floating enable move position center
+for_window [class="Eog"] floating enable
+for_window [class="goattrk2"] floating enable border normal
+for_window [class="Geany"] floating enable border normal
 
 # Keyboard repeat interval
 exec --no-startup-id xset r rate 200 30
