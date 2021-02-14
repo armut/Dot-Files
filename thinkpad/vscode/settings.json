@@ -1,0 +1,24 @@
+{
+    "editor.minimap.enabled": false,
+    "breadcrumbs.enabled": true,
+    "explorer.confirmDelete": false,
+    "editor.renderWhitespace": "none",
+    "explorer.confirmDragAndDrop": false,
+    "C/C++ Include Guard.Macro Type": "Filename",
+    "clock.alignment": "Right",
+    "workbench.colorTheme": "Tokyo Night",
+    "vim.incsearch": false,
+    "editor.fontFamily": "Fira Code Light",
+    "editor.fontLigatures": true,
+    "todo-tree.highlights.enabled": true,
+    "todo-tree.tree.showScanModeButton": false,
+    "window.menuBarVisibility": "hidden",
+    "vim.insertModeKeyBindings": [
+        {
+            "before": ["j", "j"],
+            "after": ["<Esc>"]
+        }
+],
+"python.dataScience.askForKernelRestart": false,
+"window.zoomLevel": -1
+}
