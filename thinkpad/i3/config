@@ -30,7 +30,7 @@ font pango:monospace 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec mate-terminal --working-directory=$PWD
+bindsym $mod+Return exec i3-sensible-terminal --working-directory=$PWD
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -195,6 +195,7 @@ bindsym $mod+Tab workspace next
 bindsym $mod+Shift+Tab workspace prev
 bindsym $mod+n exec firefox
 
+exec --no-startup-id setxkbmap tr
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id bash -x /home/zamma/.config/i3/scripts/tap_to_click.sh
 
