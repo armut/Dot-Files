@@ -6,9 +6,9 @@
     "explorer.confirmDragAndDrop": false,
     "C/C++ Include Guard.Macro Type": "Filename",
     "clock.alignment": "Right",
-    "workbench.colorTheme": "Tokyo Night",
+    "workbench.colorTheme": "Gruvbox Dark Medium",
     "vim.incsearch": false,
-    "editor.fontFamily": "Fira Code Light",
+    "editor.fontFamily": "Scientifica",
     "editor.fontLigatures": true,
     "todo-tree.highlights.enabled": true,
     "todo-tree.tree.showScanModeButton": false,
@@ -20,5 +20,9 @@
         }
 ],
 "python.dataScience.askForKernelRestart": false,
-"window.zoomLevel": -1
+"window.zoomLevel": -1,
+"editor.minimap.scale": 3,
+"editor.minimap.renderCharacters": false,
+"workbench.editor.enablePreview": false,
+"editor.fontSize": 20
 }
